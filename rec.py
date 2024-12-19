@@ -22,7 +22,7 @@ white_balance_value = config.get("white_balance_value", 4000)  # 수동 화이�
 output_file = config.get("output_file", "output.mp4")  # 저장 파일 이름
 
 # 카메라 열기
-cap = cv2.VideoCapture(0)  # 0은 기본 카메라
+cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)  # 0은 기본 카메라
 if not cap.isOpened():
     print("카메라를 열 수 없습니다!")
     exit(-1)
@@ -45,7 +45,7 @@ else:  # 수동 화이트 밸런스
         print("수동 화이트 밸런스를 설정할 수 없습니다!")
 
 # 비디오 파일 저장을 위한 VideoWriter 객체 생성
-fourcc = cv2.VideoWriter_fourcc(*"MJPG")
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
 if orientation == "v":
     video_size = (frame_height, frame_width)  # 세로 모드에서는 크기를 반전
 else:
@@ -68,7 +68,7 @@ if not autofocus and cap.set(cv2.CAP_PROP_FOCUS, focus_value):
     print(f"포커스를 수동으로 설정했습니다: {focus_value}")
 elif not autofocus:
     print("포커스를 설정할 수 없습니다!")
-
+print("loop")
 # 메인 루프
 while True:
     # 카메라에서 프레임 캡처
@@ -85,6 +85,7 @@ while True:
     video_writer.write(frame)
 
     # 화면에 프레임 출력
+    
     cv2.imshow("Recording...", frame)
 
     # 'q'를 누르면 녹화 종료
