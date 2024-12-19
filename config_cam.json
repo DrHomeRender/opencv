@@ -1,0 +1,11 @@
+{
+    "frame_width": 1280,
+    "frame_height": 720,
+    "fps": 30,
+    "orientation": "v",
+    "autofocus": false,
+    "focus": 150,
+    "white_balance_auto": false,
+    "white_balance_value": 4000,
+    "output_file": "vertical_output.mp4"
+}
